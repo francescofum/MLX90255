@@ -1,0 +1,26 @@
+#include <MLX90255.h>
+
+#define SI  1
+#define CLK 2
+#define analogueOut A0      // connected to analogue pin 0 of teensy
+//#define clockspeed 500000 // already default speed. Change to set a different frequency 
+                            // or use setSpeed(float frequency); to change during runtime.
+
+
+MLX90255 mlx90255(SI,CLK,analogueOut);  //instanciate MLX90255 object.
+
+void setup() {
+  // put your setup code here, to run once
+  // pin setup already handled by library.
+  
+  
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  uint16_t readings[128];         // array to store reading
+  uint16_t *readingsP = readings; // pointer to array
+  
+  mlx90255.readSensor(readingsP);
+  
+}
